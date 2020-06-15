@@ -83,116 +83,116 @@ void Constraint_RDM1::add_TraceConstraint_Real(){
 void Constraint_RDM1::add_TraceConstraint_Imag(){
     m_B.push_back(std::to_string(m_elec*2));
     for(int i=1; i<=(m_nmos*2); i++)
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i)+" "+"1.00000");
 }
 
 void Constraint_RDM1::add_DQConstraint_Real(){
     for(int i=1; i<=m_nmos; i++){
-        m_B.push_back(std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+i)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+i+m_nmos*m_nmos)+" "+std::to_string(1.00000));
+        m_B.push_back("1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+i)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+i+m_nmos*m_nmos)+" "+"1.00000");
     }
 }
 
 void Constraint_RDM1::add_DQConstraint_Imag(){
     for(int i=1; i<=m_nmos; i++){
-        m_B.push_back(std::to_string(2.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
+        m_B.push_back("2.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
     }
 }
 
 void Constraint_RDM1::add_OffdiagConstraint_Real(){
     for(int i=1; i<=m_nmos; i++)
         for(int j=1; j < i; j++){
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*m_nmos+i)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+j)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*m_nmos+i+m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+j+m_nmos*m_nmos)+" "+std::to_string(1.00000));
+            m_B.push_back("1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*m_nmos+i)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+j)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*m_nmos+i+m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*m_nmos+j+m_nmos*m_nmos)+" "+"1.00000");
         }
 }
 
 void Constraint_RDM1::add_OffdiagConstraint_Imag(){
     for(int i=1; i<=m_nmos; i++)
         for(int j=1; j < i; j++){
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
+            m_B.push_back("0.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
 
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos)+" "+std::to_string(-1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i)+" "+std::to_string(-1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(-1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(-1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
+            m_B.push_back("0.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos)+" "+"-1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i)+" "+"-1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+"-1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"-1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+"1.00000");
         }
 }
 
 void Constraint_RDM1::add_HermrealConstraint(){
     for(int i=1; i<=m_nmos; i++)
         for(int j=1; j < i; j++){
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(-1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos)+" "+std::to_string(-1.00000));
+            m_B.push_back("0.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+"-1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos)+" "+"-1.00000");
 
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(-1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(-1.00000));
+            m_B.push_back("0.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"-1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+"-1.00000");
         }
 }
 
 void Constraint_RDM1::add_HermimagConstraint(){
     for(int i=1; i<=m_nmos; i++)
         for(int j=1; j < i; j++){
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j)+" "+std::to_string(1.00000));
+            m_B.push_back("0.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j)+" "+"1.00000");
 
-            m_B.push_back(std::to_string(0.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
+            m_B.push_back("0.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+j+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((j+m_nmos-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"1.00000");
+            m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+j+4*m_nmos*m_nmos)+" "+"1.00000");
         }
 }
 
 void Constraint_RDM1::add_HermdiagConstraint(){
     for(int i=1; i<=m_nmos; i++){
         /*D*/
-        m_B.push_back(std::to_string(0.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(-1.00000));
+        m_B.push_back("0.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos)+" "+"-1.00000");
 
-        m_B.push_back(std::to_string(0.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+m_nmos)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i)+" "+std::to_string(1.00000));
+        m_B.push_back("0.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+m_nmos)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i)+" "+"1.00000");
 
         /*Q*/
-        m_B.push_back(std::to_string(0.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(-1.00000));
+        m_B.push_back("0.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"-1.00000");
 
-        m_B.push_back(std::to_string(0.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
-        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+std::to_string(1.00000));
+        m_B.push_back("0.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i-1)*2*m_nmos+i+m_nmos+4*m_nmos*m_nmos)+" "+"1.00000");
+        m_A.push_back(std::to_string(m_B.size())+" "+std::to_string((i+m_nmos-1)*2*m_nmos+i+4*m_nmos*m_nmos)+" "+"1.00000");
 
     }
 }
